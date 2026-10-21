@@ -128,6 +128,22 @@ PALETTES = {
         "indent": (33, 4, 27),
         **DARK_ACCENTS,
     },
+    # Night's colors on the terminal's #333333 background; the bg ladder is raised to stay distinguishable
+    # (bg_3, the selection color, is the terminal's #55514e).
+    "twilight": {
+        "bg_deep": (0, 3, 16),
+        "bg_0": (0, 0, 20),
+        "bg_1": (40, 4, 23),
+        "bg_2": (20, 4, 26),
+        "bg_3": (26, 4, 32),
+        "bg_4": (24, 4, 38),
+        "fg": (20, 5, 88),
+        "fg_mute": (30, 5, 68),
+        "comment": (30, 5, 49),
+        "fg_faint": (33, 4, 50),
+        "indent": (33, 4, 37),
+        **DARK_ACCENTS,
+    },
     "moon": {
         "bg_deep": (230, 20, 8),
         "bg_0": (230, 18, 11),
@@ -173,6 +189,7 @@ PALETTES = {
 
 VARIANTS = {
     "night": {"title": "Night", "dark": True},
+    "twilight": {"title": "Twilight", "dark": True},
     "moon": {"title": "Moon", "dark": True},
     "dawn": {"title": "Dawn", "dark": False},
 }
@@ -220,6 +237,8 @@ FAMILY_ACCENT = {
 GRAY_SPEC = {
     "night": {10: "bg_0", 20: 10.5, 30: "bg_1", 40: "bg_3", 50: "bg_4", 60: 32, 70: 40, 80: "fg_faint",
               90: 59, 100: "fg_mute", 110: 75, 120: 81, 130: "fg", 140: 91, 150: 94, 160: 97},
+    "twilight": {10: "bg_0", 20: 21.5, 30: "bg_1", 40: "bg_3", 50: "bg_4", 60: 42, 70: 46, 80: "fg_faint",
+                 90: 59, 100: "fg_mute", 110: 75, 120: 81, 130: "fg", 140: 91, 150: 94, 160: 97},
     "moon": {10: "bg_0", 20: 13, 30: "bg_1", 40: "bg_3", 50: "bg_4", 60: 35, 70: 43, 80: "fg_faint",
              90: 61, 100: "fg_mute", 110: 75, 120: 81, 130: "fg", 140: 91, 150: 94, 160: 97},
     "dawn": {10: "fg", 20: 22, 30: 24, 40: 26, 50: 30, 60: 36, 70: "fg_mute", 80: "comment", 90: "fg_faint",

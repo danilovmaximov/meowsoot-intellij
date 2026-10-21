@@ -6,10 +6,12 @@ It is built on top of the **Islands** UI (2025.3+).
 | Variant | UI theme | Editor scheme |
 |---|---|---|
 | **Night**: warm-neutral dark | `Meowsoot Night` (parent *Islands Dark*) | `Meowsoot Night` (parent *Darcula*) |
+| **Twilight**: Night colors on a lighter `#333333` background | `Meowsoot Twilight` (parent *Islands Dark*) | `Meowsoot Twilight` (parent *Darcula*) |
 | **Moon**: cool, blue-tinted dark | `Meowsoot Moon` (parent *Islands Dark*) | `Meowsoot Moon` (parent *Darcula*) |
 | **Dawn**: warm parchment light | `Meowsoot Dawn` (parent *Islands Light*) | `Meowsoot Dawn` (parent *Default*) |
 
 ![Night](docs/night.png)
+![Twilight](docs/twilight.png)
 ![Moon](docs/moon.png)
 ![Dawn](docs/dawn.png)
 

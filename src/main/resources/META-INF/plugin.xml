@@ -7,6 +7,7 @@
 <a href="https://github.com/marekh19/meowsoot.nvim">meowsoot.nvim</a>, built on the Islands UI.</p>
 <ul>
   <li><b>Meowsoot Night</b> – warm-neutral dark</li>
+  <li><b>Meowsoot Twilight</b> – Night colors on a lighter #333333 background</li>
   <li><b>Meowsoot Moon</b> – cool blue-tinted dark</li>
   <li><b>Meowsoot Dawn</b> – warm parchment light</li>
 </ul>
@@ -17,9 +18,11 @@
 
   <extensions defaultExtensionNs="com.intellij">
     <themeProvider id="com.github.meowsoot.night" path="/themes/meowsoot-night.theme.json" targetUi="islands"/>
+    <themeProvider id="com.github.meowsoot.twilight" path="/themes/meowsoot-twilight.theme.json" targetUi="islands"/>
     <themeProvider id="com.github.meowsoot.moon" path="/themes/meowsoot-moon.theme.json" targetUi="islands"/>
     <themeProvider id="com.github.meowsoot.dawn" path="/themes/meowsoot-dawn.theme.json" targetUi="islands"/>
     <bundledColorScheme id="com.github.meowsoot.night.scheme" path="/themes/meowsoot-night"/>
+    <bundledColorScheme id="com.github.meowsoot.twilight.scheme" path="/themes/meowsoot-twilight"/>
     <bundledColorScheme id="com.github.meowsoot.moon.scheme" path="/themes/meowsoot-moon"/>
     <bundledColorScheme id="com.github.meowsoot.dawn.scheme" path="/themes/meowsoot-dawn"/>
   </extensions>
