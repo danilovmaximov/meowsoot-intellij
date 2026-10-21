@@ -25,7 +25,7 @@ Then, in the IDE, go to **Settings → Plugins → ⚙ → Install Plugin from D
 Choose the theme in **Settings → Appearance & Behavior → Appearance**. Each UI theme switches to its matching editor scheme.
 
 The build downloads IntelliJ IDEA (`platformVersion` in `gradle.properties`) to compile against.
-To build against a local installation instead, pass `-PplatformLocalPath=/path/to/idea`.
+To build against a local installation instead, pass `-PplatformLocalPath=/path/to/idea`, or set `platformLocalPath` in `~/.gradle/gradle.properties`.
 
 ## How it works
 
