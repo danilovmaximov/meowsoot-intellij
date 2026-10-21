@@ -1,22 +1,53 @@
 plugins {
-    kotlin("jvm") version "2.4.0"
+    java
+    id("org.jetbrains.intellij.platform") version "2.19.0"
 }
 
-group = "org.example"
-version = "1.0-SNAPSHOT"
+group = providers.gradleProperty("pluginGroup").get()
+version = providers.gradleProperty("pluginVersion").get()
 
 repositories {
     mavenCentral()
+    intellijPlatform {
+        defaultRepositories()
+    }
 }
 
 dependencies {
-    testImplementation(kotlin("test"))
+    intellijPlatform {
+        // Set `platformLocalPath` (e.g. in ~/.gradle/gradle.properties) to build against an installed IDE
+        // instead of downloading one.
+        val localPath = providers.gradleProperty("platformLocalPath").orNull
+        if (localPath.isNullOrBlank()) {
+            intellijIdea(providers.gradleProperty("platformVersion"))
+        } else {
+            local(localPath)
+        }
+        pluginVerifier()
+    }
 }
 
-kotlin {
-    jvmToolchain(26)
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
 }
 
-tasks.test {
-    useJUnitPlatform()
+intellijPlatform {
+    buildSearchableOptions = false
+    instrumentCode = false
+
+    pluginConfiguration {
+        version = providers.gradleProperty("pluginVersion")
+        ideaVersion {
+            sinceBuild = providers.gradleProperty("pluginSinceBuild")
+            untilBuild = provider { null }
+        }
+    }
+
+    pluginVerification {
+        ides {
+            recommended()
+        }
+    }
 }
