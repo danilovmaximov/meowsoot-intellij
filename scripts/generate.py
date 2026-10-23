@@ -449,6 +449,25 @@ def flatten(ui, prefix=""):
     return out
 
 
+def effective_ui(chain):
+    """Flattened `ui` of a parentTheme chain, as the IDE applies it.
+
+    Parent-only keys come first, then the child's (UIThemeBean.importFromParentTheme); entries are applied
+    in order and a "*.x" entry overrides every key ending in ".x" applied before it (UITheme.applyTo).
+    """
+    merged = {}
+    for t in chain:
+        child = flatten(t.get("ui", {}))
+        merged = {**{k: v for k, v in merged.items() if k not in child}, **child}
+    out = {}
+    for k, v in merged.items():
+        if k.startswith("*."):
+            tail = k[1:]
+            out = {x: y for x, y in out.items() if x.startswith("*.") or not x.endswith(tail)}
+        out[k] = v
+    return out
+
+
 # --------------------------------------------------------------------------------------------------
 # UI theme
 # --------------------------------------------------------------------------------------------------
@@ -484,10 +503,10 @@ def build_theme(variant, ide):
     r = Ramps(variant, chain[-1]["colors"])
     c = r.c
 
-    merged_colors, merged_ui = {}, {}
+    merged_colors = {}
     for t in chain:
         merged_colors.update(t.get("colors", {}))
-        merged_ui.update(flatten(t.get("ui", {})))
+    merged_ui = effective_ui(chain)
 
     # 1. Named palette: Islands ramps rebuilt from meowsoot, every other hard-coded named color re-mapped.
     colors = {}
