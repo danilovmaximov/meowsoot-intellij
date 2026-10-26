@@ -586,12 +586,24 @@ def build_theme(variant, ide):
     # 3. UI keys: re-map hard-coded parent values, then meowsoot-specific overrides.
     # Inherited UI keys that reference named colors are NOT re-resolved against this theme's color map
     # (the IDE keeps the parent's resolution), so every color-valued key of the chain is re-declared here.
+    # Named references are written out as hex: the token names differ between IDE versions (e.g. 2026.2's
+    # "dialog-bg" is "container-dialog-bg" in 2026.1) and an unknown name leaves the key without a color.
+    all_colors = {**merged_colors, **colors}
+
+    def resolve(name):
+        seen = set()
+        while name in all_colors and name not in seen:
+            seen.add(name)
+            name = all_colors[name]
+        return name
+
     def ui_color(v):
         if isinstance(v, str):
             if HEX_RE.fullmatch(v):
                 return r.remap(v)
-            if v in merged_colors or v in colors:
-                return v
+            if v in all_colors:
+                hex_ = resolve(v)
+                return hex_ if HEX_RE.fullmatch(hex_) else None
         elif isinstance(v, dict):
             out = {k: ui_color(x) for k, x in v.items()}
             if any(x is not None for x in out.values()):
