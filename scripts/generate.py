@@ -187,9 +187,10 @@ PALETTES = {
     },
 }
 
+# "frame" (HSL) overrides the main window background around the islands, which defaults to bg_deep.
 VARIANTS = {
     "night": {"title": "Night", "dark": True},
-    "twilight": {"title": "Twilight", "dark": True},
+    "twilight": {"title": "Twilight", "dark": True, "frame": (0, 0, 18)},
     "moon": {"title": "Moon", "dark": True},
     "dawn": {"title": "Dawn", "dark": False},
 }
@@ -519,6 +520,7 @@ def build_theme(variant, ide):
 
     # 2. meowsoot semantics on top of the Islands token layer. Pink is the brand accent.
     pink, bg0 = c["pink"], c["bg_0"]
+    frame = hsl_to_hex(meta["frame"]) if "frame" in meta else c["bg_deep"]
 
     def tint(col, a):
         return blend(col, a, bg0)
@@ -566,7 +568,7 @@ def build_theme(variant, ide):
     }
     if dark:
         sem.update({
-            "main-window-bg": c["bg_deep"],
+            "main-window-bg": frame,
             "main-window-bg-alt": c["bg_2"],
             "got-it-bg": tint(pink, 0.3),
             "got-it-border": tint(pink, 0.45),
@@ -620,7 +622,7 @@ def build_theme(variant, ide):
         "ToolWindow.Button.selectedForeground": c["fg"],
         "GotItTooltip.iconBorderColor": c["fg"],
         "Tooltip.Learning.iconBorderColor": c["fg"],
-        "MainWindow.Tab.background": c["bg_deep"] if dark else c["bg_1"],
+        "MainWindow.Tab.background": frame if dark else c["bg_1"],
         "Editor.ToolTip.selectionBackground": c["bg_3"],
         "EditorTabs.underlineColor": pink,
         "EditorTabs.inactiveUnderlineColor": c["fg_faint"],
