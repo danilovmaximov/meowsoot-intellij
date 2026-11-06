@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>com.github.danilovmaximov.meowsoot</id>
-  <name>Meowsoot Theme</name>
-  <vendor url="https://github.com/marekh19/meowsoot.nvim">Meowsoot</vendor>
+  <name>Meowsoot</name>
+  <vendor url="https://github.com/danilovmaximov/meowsoot-intellij">Meowsoot</vendor>
   <description><![CDATA[
 <p>A soft, cozy pastel theme ported from
 <a href="https://github.com/marekh19/meowsoot.nvim">meowsoot.nvim</a>, built on the Islands UI.</p>
