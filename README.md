@@ -29,19 +29,26 @@ To build against a local installation instead, pass `-PplatformLocalPath=/path/t
 
 ## How it works
 
-The themes are generated rather than hand-written. `scripts/generate.py` uses only the Python stdlib and does the following:
+The themes are generated rather than hand-written. `scripts/generate.py` uses only the Python stdlib and needs no IDE installed. The code lives in `scripts/meowsoot/`:
 
-1. Ports the meowsoot HSL palette (`palette.lua`/`hsl.lua`) exactly, including the derived colors (diff, search and rainbow).
-2. Reads the parent Islands themes and the Darcula/Default schemes from an installed IDE, along with the color settings pages contributed by bundled and installed plugins.
-3. Rebuilds the Islands color ramps (`gray-*`, `blue-*`, …) from meowsoot colors and re-maps every other hard-coded parent color onto those ramps. Nothing inherited stays JetBrains-blue.
-4. Layers the meowsoot semantics on top. Pink is the brand accent. Syntax colors follow the nvim highlight groups: cyan keywords, yellow strings, pink functions, lavender types and peach constants.
+| Module | Contents |
+|---|---|
+| `palette.py` | The meowsoot HSL palettes, ported from `palette.lua`. This is the only place to change colors. |
+| `colors.py` | Hex colors resolved from a palette, plus derived ones (diff, search, rainbow). |
+| `ramps.py` | The Islands color ramps (`gray-*`, `blue-*`, …) rebuilt from the palette, and the legacy names (`Gray1`, `grey01`, …) aliased onto them. |
+| `tokens.py` | Islands semantic tokens (`text-*`, `accent-*`, `selection-*`, …) and project gradients. |
+| `ui.py` | The UI keys whose parent value is a literal color, grouped by area. |
+| `icons.py` | The icon color palette. |
+| `editor.py`, `languages.py` | Editor scheme colors and text attributes. |
+| `theme.py`, `scheme.py` | Writers for `.theme.json` and the scheme `.xml`. |
 
-The output is committed to `src/main/resources/themes/`, so the Gradle build only packages it. To regenerate, for example after an IDE update:
+The UI themes extend *Islands Dark* / *Islands Light*. Most Islands UI keys refer to ramps and tokens by name, so redefining those recolors the whole UI. Only keys with literal colors in the parent need explicit values in `ui.py`.
+The editor schemes extend *Darcula* / *Default* and override what meowsoot styles. Pink is the brand accent. Syntax colors follow the nvim highlight groups: cyan keywords, yellow strings, pink functions, lavender types and peach constants.
+
+The output is committed to `src/main/resources/themes/`, so the Gradle build only packages it. To regenerate after changing the code:
 
 ```sh
-python3 scripts/generate.py \
-  --ide ~/.local/share/JetBrains/Toolbox/apps/intellij-idea \
-  --plugins ~/.local/share/JetBrains/IntelliJIdea2026.2   # optional: user-installed plugins (e.g. Scala)
+python3 scripts/generate.py
 ```
 
 ## Credits
