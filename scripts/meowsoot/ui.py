@@ -47,6 +47,8 @@ def controls(c):
         "TabbedPane.disabledUnderlineColor": c.fg_faint,
         "EditorTabs.underlineColor": c.pink,
         "EditorTabs.inactiveUnderlineColor": c.fg_faint,
+        # The IDE defaults this to #3573F0 in every theme that omits it, shadowing the Islands parent.
+        "ToolWindow.Button.selectedBackground": c.pink,
         "ToolWindow.HeaderTab.selectedBackground": c.by_mode(c.bg_3, c.bg_1),
         "ToolWindow.HeaderTab.selectedInactiveBackground": c.bg_2,
         "MainWindow.Tab.background": c.frame,

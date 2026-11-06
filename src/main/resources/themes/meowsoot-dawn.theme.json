@@ -477,6 +477,7 @@
     "Tag.background": "#E6E0DB",
     "TitledBorder.titleColor": "#3C312A",
     "ToolWindow.Button.DragAndDrop.buttonDropBackground": "#91125680",
+    "ToolWindow.Button.selectedBackground": "#911256",
     "ToolWindow.Button.selectedForeground": "#3C312A",
     "ToolWindow.DragAndDrop.areaBackground": "#9112564D",
     "ToolWindow.HeaderTab.selectedBackground": "#E6E0DB",

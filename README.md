@@ -1,12 +1,12 @@
 # Meowsoot for JetBrains IDEs
 
 A port of [meowsoot.nvim](https://github.com/marekh19/meowsoot.nvim), a soft and cozy pastel theme, to IntelliJ-based IDEs.
-It is built on top of the **Islands** UI (2025.3+).
+It is built on top of the **Islands** UI.
 
 | Variant | UI theme | Editor scheme |
 |---|---|---|
 | **Night**: warm-neutral dark | `Meowsoot Night` (parent *Islands Dark*) | `Meowsoot Night` (parent *Darcula*) |
-| **Twilight**: Night colors on a lighter `#333333` background | `Meowsoot Twilight` (parent *Islands Dark*) | `Meowsoot Twilight` (parent *Darcula*) |
+| **Twilight**: Night colors on a lighter background | `Meowsoot Twilight` (parent *Islands Dark*) | `Meowsoot Twilight` (parent *Darcula*) |
 | **Moon**: cool, blue-tinted dark | `Meowsoot Moon` (parent *Islands Dark*) | `Meowsoot Moon` (parent *Darcula*) |
 | **Dawn**: warm parchment light | `Meowsoot Dawn` (parent *Islands Light*) | `Meowsoot Dawn` (parent *Default*) |
 

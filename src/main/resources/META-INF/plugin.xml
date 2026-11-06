@@ -5,13 +5,13 @@
   <description><![CDATA[
 <p>A soft, cozy pastel theme ported from
 <a href="https://github.com/marekh19/meowsoot.nvim">meowsoot.nvim</a>, built on the Islands UI.</p>
+<p>Includes 4 variants.</p>
 <ul>
   <li><b>Meowsoot Night</b> – warm-neutral dark</li>
-  <li><b>Meowsoot Twilight</b> – Night colors on a lighter #333333 background</li>
+  <li><b>Meowsoot Twilight</b> – Night colors on a lighter background</li>
   <li><b>Meowsoot Moon</b> – cool blue-tinted dark</li>
   <li><b>Meowsoot Dawn</b> – warm parchment light</li>
 </ul>
-<p>Each UI theme ships with a matching editor color scheme.</p>
 ]]></description>
 
   <depends>com.intellij.modules.platform</depends>
